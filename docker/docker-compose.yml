@@ -1,0 +1,38 @@
+version: '2.4'
+services:
+  jobs:
+    build: .
+    ports:
+    - "5001:5000"
+    volumes:
+      - ../jobs:/opt/jobs
+      - ../files:/opt/files
+    links:
+      - mongo
+
+    entrypoint: ["tail", "-f", "/dev/null"]
+
+  mongo:
+    image: mongo:7.0
+    user: root
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ../data:/data
+      - ../files:/files
+    #command: supervisord -n && apt-get update && apt-get install -y csvtool
+    #environment:
+    #  MONGO_INITDB_ROOT_USERNAME: aclaraujo
+    #  MONGO_INITDB_ROOT_PASSWORD: ascii
+
+  mongo-express:
+    image: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    links:
+      - mongo
+    #environment:
+    #  ME_CONFIG_MONGODB_ADMINUSERNAME: root
+    #  ME_CONFIG_MONGODB_ADMINPASSWORD: stone
