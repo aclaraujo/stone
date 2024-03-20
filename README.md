@@ -26,5 +26,5 @@ Nesse banco de dados, as tabelas refletem as necessidades analíticas da organiz
 2. Mínimo disponível: 6Gb RAM
 
 ## Executando
-1. Clonar o repositório:
-2. 
+1. Clonar este repositório
+2. Entrar na pasta stone/docker e digitar docker-compose up -d
