@@ -1,12 +1,20 @@
 # Dados Abertos
 
-Insights sobre os arquivos Empresas e Socios do portal de dados abertos
+Insights sobre os arquivos Empresas e Socios do [Portal de Dados Abertos ](https://dados.gov.br/dados/conjuntos-dados/cadastro-nacional-da-pessoa-juridica---cnpj)
 
 ## Visão Geral
 
-### Arquitetura
+### Arquitetura Geral
 
 ![image](https://github.com/aclaraujo/stone/assets/45980136/98a50ad1-4dcc-43ad-9933-72e27861b10b)
+
+O projeto foi desenvolvido utilizando os seguintes componentes ou soluções:
+
+1. Python - para a escrita dos jobs de extração, carga e tratamento dos dados
+2. MongoDB - para o armazenamento dos dados
+3. MongoDB-Express para visualização dos dados
+
+Todos os componentes são executados por meio de container Docker. Um projeto em docker-compose orquestra a criação e execução dos containers
 
 ### Arquitetura de dados
 O projeto foi desenvolvido utilizando o padrão "Arquitetura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
