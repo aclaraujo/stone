@@ -1,77 +1,41 @@
-from mongoutil import get_database
+#!/usr/bin/env python3
 
-db_bronze = get_database("bronze")
-
-db_silver = get_database("silver")
-
-new_coll_emp = db_silver.get_collection("empresas")
-
-cur_emp = db_bronze['empresas'].aggregate([
-  {
-    "$replaceRoot": {
-      "newRoot": {
-        "$arrayToObject": [
-          [
-            {
-              "k": "cnpj","v": "$0"
-            },
-            {
-              "k": "razao_social","v": "$1"
-            },
-            {
-              "k": "natureza_juridica","v": "$2"
-            },
-            {
-              "k": "qualificacao_repsonsavel","v": "$3"
-            },
-            {
-              "k": "capital_social","v": "$4"
-            },
-            {
-              "k": "cod_porte","v": "$5"
-            }
-          ]
-        ]
-      }
-    }
-  }
-])
-
-new_coll_emp.drop()
-new_coll_emp.insert_many(cur_emp)
-
-cur_soc = db_bronze['socios'].aggregate([
-  {
-    "$replaceRoot": {
-      "newRoot": {
-        "$arrayToObject": [
-          [
-            {
-              "k": "cnpj","v": "$0"
-            },
-            {
-              "k": "tipo_socio","v": "$1"
-            },
-            {
-              "k": "nome_socio","v": "$2"
-            },
-            {
-              "k": "documento_socio","v": "$3"
-            },
-            {
-              "k": "codigo_qualificacao_socio","v": "$4"
-            }
-          ]
-        ]
-      }
-    }
-  }
-])
-
-new_coll_soc = db_silver.get_collection("socios")
-
-new_coll_soc.drop()
-new_coll_soc.insert_many(cur_soc)
+from mongoutil import get_database, insert_many, to_dataframe, to_collection
 
 
+def main():
+    db_bronze = get_database("bronze")
+    db_silver = get_database("silver")
 
+    df_emp = to_dataframe(db_bronze["empresas"])
+
+    df_emp.rename({
+        "0": "cnpj",
+        "1": "razao_social",
+        "2": "natureza_juridica",
+        "3": "qualificacao_responsavel",
+        "4": "capital_social",
+        "5": "cod_porte"
+    }, inplace=True, axis=1)
+
+    to_collection(db_silver,
+                  df_emp[["cnpj", "razao_social", "natureza_juridica", "qualificacao_responsavel", "capital_social",
+                          "cod_porte"]],
+                  "empresas")
+
+    df_soc = to_dataframe(db_bronze["socios"])
+    df_soc.rename({
+        "0": "cnpj",
+        "1": "tipo_socio",
+        "2": "nome_socio",
+        "3": "documento_socio",
+        "4": "codigo_qualificacao_socio"
+    }, inplace=True, axis=1)
+
+    to_collection(db_silver,
+                  df_soc[["cnpj", "tipo_socio", "nome_socio", "documento_socio", "codigo_qualificacao_socio"]],
+                  "socios")
+
+
+if __name__ == '__main__':
+    main()

@@ -1,20 +1,36 @@
+#!/usr/bin/env python3
+
+import logging
+import sys
+
 import pandas as pd
-import json
+from mongoutil import get_database, to_collection
 
-from mongoutil import get_database
-
-
-def mongoimport(csv_path, db_name, coll_name):
-
-    db = get_database(db_name)
-    coll = db[coll_name]
-    coll.drop()
-    data = pd.read_csv(csv_path, header=None, delimiter=";", encoding="ISO-8859-1")
-    json_data = data.to_json(orient='records', force_ascii=False)
-    payload = json.loads(json_data)
-    coll.insert_many(payload)
+logger: logging.Logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.StreamHandler(sys.stdout)
+logger.addHandler(handler)
 
 
-mongoimport("files/csv/K3241.K03200Y9.D40210.EMPRECSV", "bronze", "empresas")
+def mongoimport(csv_path, db, coll_name, cols_names):
 
-mongoimport("files/csv/K3241.K03200Y9.D40210.SOCIOCSV", "bronze", "socios")
+    logger.info(f'Loading file {csv_path}')
+    df = pd.read_csv(csv_path, header=None, names=cols_names, delimiter=";", encoding="ISO-8859-1", on_bad_lines="skip")
+    to_collection(db, df, coll_name)
+
+
+def main():
+
+    db = get_database("bronze")
+
+    cols_empresas = ["cnpj", "razao_social", "natureza_juridica", "qualificacao_responsavel", "capital_social",
+                     "cod_porte", "ente_federativo"]
+    mongoimport("files/csv/K3241.K03200Y9.D40210.EMPRECSV", db, "empresas", cols_empresas)
+
+    cols_socios = ["cnpj", "tipo_socio", "nome_socio", "documento_socio", "codigo_qualificacao_socio", "data_sociedade",
+                   "codigo_pais", "cpf_rep_legal", "nome_representante", "qualificacao_representante", "faixa_etaria"]
+    mongoimport("files/csv/K3241.K03200Y9.D40210.SOCIOCSV", db, "socios", cols_socios)
+
+
+if __name__ == '__main__':
+    main()
