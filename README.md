@@ -45,5 +45,5 @@ Todos os componentes são executados por meio de container Docker. Um projeto em
 5. Após o serviço ser exectado a seguinte mensagem deverá aparecer no console
    ```jobs-1 exited with code 0```
 7. No navegador acesse [http://localhost8081](http://localhost8081) para acessar as tabelas criadas
-8. Faça login com o usuário e senha admin:pass
-9. Para visualizar o resultado final da execução, acessa o banco gold e coleção fato_socios
+8. Faça login com o usuário e senha ***admin:pass***
+9. Para visualizar o resultado final da execução, acessa o banco gold e coleção ***fato_socios***
