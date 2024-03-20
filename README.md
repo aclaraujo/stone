@@ -32,3 +32,4 @@ Nesse banco de dados, as tabelas refletem as necessidades analíticas da organiz
 4. Após o serviço ser exectado uma mensagem como jobs-1 exited with code 0 deverá ser exibido no console
 5. No navegador acesse [http://localhost8081](http://localhost8081) para acessar as tabelas criadas
 6. Faça login com o usuário e senha admin:pass
+7. Para visualizar o resultado final da execução, acessa o banco gold e coleção fato_socios
