@@ -22,12 +22,13 @@ Nesse banco de dados, as tabelas refletem as necessidades analíticas da organiz
 
 
 ### Requisitos para execução
-1. Possuir o Docker instalado
-2. Mínimo disponível: 6Gb RAM
+1. Possuir o [Docker](https://docs.docker.com/desktop/install/linux-install/) instalado
+2. Mínimo disponível: 10Gb RAM
 
 ## Executando
 1. Clonar este repositório
 2. Entrar na pasta stone/docker e digitar docker-compose up
 3. Aguardar os serviços serem iniciados e a execução do pipeline de ingestão dos dados
 4. Após o serviço ser exectado uma mensagem como jobs-1 exited with code 0 deverá ser exibido no console
-5. Abra o link [link](http://localhost8081) para acessar as tabelas criadas
+5. No navegador acesse [http://localhost8081](http://localhost8081) para acessar as tabelas criadas
+6. Faça login com o usuário e senha admin:pass
