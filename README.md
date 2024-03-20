@@ -12,14 +12,16 @@ Insights sobre os arquivos Empresas e Socios do portal de dados abertos
 O projeto foi desenvolvido utilizando o padrão "Arquitetura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
 
 #### Bronze
-Banco de dados responsável por armazenar os dados brutos (raw). Os dados são extraídos das fontes e inseridos no armazenamento da forma mais original possível, evitando assim perda de dados ou introdução de inconssitência. Outra função para esse banco é armazenar dados históricos.
+Banco de dados responsável por armazenar os dados brutos (raw). Os dados são extraídos das fontes e inseridos no armazenamento da forma mais original possível, evitando assim perda de dados ou introdução de inconssistência. Outra função para esse banco é armazenar dados históricos.
+Ele possui as tabelas: empresas e socios
 
 #### Silver
 Banco dados responsável por armazenar os dados em uma forma mais estruturada, porém ainda próxima do dado origem. Nesse modelo são realizadas as primeiras validações de qualidade e adequações nos modelos de dados, tornandoo-os mais próximos dos requisitos analíticos.
+Ele possui as tabelas: empresas e socios
 
 #### Gold
 Nesse banco de dados, as tabelas refletem as necessidades analíticas da organização, frequetemente apresentando uma modelagem multidimensinal. Antes de sua ingestão, todas as validações e verificações de qualidade devem ser realizadas. Outra tarefa que pode ser executada nesse banco é o enriquecimento dados a apartir de outra fontes, sekam internas ou externas.
-
+Possui a tabela: fato_socios
 
 ### Requisitos para execução
 1. Possuir o [Docker](https://docs.docker.com/desktop/install/linux-install/) instalado
