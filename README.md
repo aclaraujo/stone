@@ -8,8 +8,8 @@ Insights sobre os arquivos Empresas e Socios do portal de dados abertos
 
 ![image](https://github.com/aclaraujo/stone/assets/45980136/98a50ad1-4dcc-43ad-9933-72e27861b10b)
 
-### Arquitura de dados
-O projeto foi desenvolvido utilizando o padrão "Arquitura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
+### Arquitetura de dados
+O projeto foi desenvolvido utilizando o padrão "Arquitetura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
 
 #### Bronze
 Banco de dados responsável por armazenar os dados brutos (raw). Os dados são extraídos das fontes e inseridos no armazenamento da forma mais original possível, evitando assim perda de dados ou introdução de inconssitência. Outra função para esse banco é armazenar dados históricos.
