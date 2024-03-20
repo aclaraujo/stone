@@ -16,11 +16,11 @@ Banco de dados responsável por armazenar os dados brutos (raw). Os dados são e
 Ele possui as tabelas: empresas e socios
 
 #### Silver
-Banco dados responsável por armazenar os dados em uma forma mais estruturada, porém ainda próxima do dado origem. Nesse modelo são realizadas as primeiras validações de qualidade e adequações nos modelos de dados, tornandoo-os mais próximos dos requisitos analíticos.
+Banco de dados responsável por armazenar os dados em uma forma mais estruturada, porém ainda próxima do dado origem. Nesse modelo são realizadas as primeiras validações de qualidade e adequações nos modelos de dados, tornando-os mais próximos dos requisitos analíticos.
 Ele possui as tabelas: empresas e socios
 
 #### Gold
-Nesse banco de dados, as tabelas refletem as necessidades analíticas da organização, frequetemente apresentando uma modelagem multidimensinal. Antes de sua ingestão, todas as validações e verificações de qualidade devem ser realizadas. Outra tarefa que pode ser executada nesse banco é o enriquecimento dados a apartir de outra fontes, sekam internas ou externas.
+Nesse banco de dados, as tabelas refletem as necessidades analíticas da organização, frequetemente apresentando uma modelagem multidimensinal. Antes de sua ingestão, todas as validações e verificações de qualidade devem ser realizadas. Outra tarefa que pode ser executada nesse banco é o enriquecimento de dados a apartir de outra fontes, sejam internas ou externas a organização.
 Possui a tabela: fato_socios
 
 ### Requisitos para execução
