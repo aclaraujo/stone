@@ -35,7 +35,7 @@ Todos os componentes são executados por meio de container Docker. Um projeto em
 
 ### Requisitos para execução
 1. Possuir o [Docker](https://docs.docker.com/desktop/install/linux-install/) instalado
-2. Mínimo disponível: 10Gb RAM
+2. Minimo de 10Gb RAM disponível
 
 ## Executando
 1. Clonar este repositório
