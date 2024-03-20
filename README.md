@@ -17,19 +17,21 @@ O projeto foi desenvolvido utilizando os seguintes componentes ou soluções:
 Todos os componentes são executados por meio de container Docker. Um projeto em docker-compose orquestra a criação e execução dos containers
 
 ### Arquitetura de dados
-O projeto foi desenvolvido utilizando o padrão "Arquitetura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
+* O projeto foi desenvolvido utilizando o padrão "Arquitetura de Medalhões". Dessa forma, o armazenamento e disponibilização de dados está organizado da seguinte maneira:
 
 #### Bronze
-Banco de dados responsável por armazenar os dados brutos (raw). Os dados são extraídos das fontes e inseridos no armazenamento da forma mais original possível, evitando assim perda de dados ou introdução de inconssistência. Outra função para esse banco é armazenar dados históricos.
-Ele possui as tabelas: empresas e socios
+* Banco de dados responsável por armazenar os dados brutos (raw). Os dados são extraídos das fontes e inseridos no armazenamento da forma mais original possível, evitando assim perda de dados ou introdução de inconssistência. Outra função para esse banco é armazenar dados históricos.
+* Possui as tabelas: empresas e socios
 
 #### Silver
-Banco de dados responsável por armazenar os dados em uma forma mais estruturada, porém ainda próxima do dado origem. Nesse modelo são realizadas as primeiras validações de qualidade e adequações nos modelos de dados, tornando-os mais próximos dos requisitos analíticos.
-Ele possui as tabelas: empresas e socios
+* Banco de dados responsável por armazenar os dados em uma forma mais estruturada, porém ainda próxima do dado origem. Nesse modelo são realizadas as primeiras validações de qualidade e adequações nos modelos de dados, tornando-os mais próximos dos requisitos analíticos.
+* Possui as tabelas: empresas e socios
 
 #### Gold
-Nesse banco de dados, as tabelas refletem as necessidades analíticas da organização, frequetemente apresentando uma modelagem multidimensinal. Antes de sua ingestão, todas as validações e verificações de qualidade devem ser realizadas. Outra tarefa que pode ser executada nesse banco é o enriquecimento de dados a apartir de outra fontes, sejam internas ou externas a organização.
-Possui a tabela: fato_socios
+* Nesse banco de dados, as tabelas refletem as necessidades analíticas da organização, frequetemente apresentando uma modelagem multidimensinal.
+* Antes de sua ingestão, todas as validações e verificações de qualidade devem ser realizadas.
+* Outra tarefa que pode ser executada nesse banco é o enriquecimento de dados a apartir de outra fontes, sejam internas ou externas a organização.
+* Possui a tabela: fato_socios
 
 ### Requisitos para execução
 1. Possuir o [Docker](https://docs.docker.com/desktop/install/linux-install/) instalado
@@ -37,9 +39,11 @@ Possui a tabela: fato_socios
 
 ## Executando
 1. Clonar este repositório
-2. Entrar na pasta stone/docker e digitar docker-compose up
-3. Aguardar os serviços serem iniciados e a execução do pipeline de ingestão dos dados
-4. Após o serviço ser exectado uma mensagem como jobs-1 exited with code 0 deverá ser exibido no console
-5. No navegador acesse [http://localhost8081](http://localhost8081) para acessar as tabelas criadas
-6. Faça login com o usuário e senha admin:pass
-7. Para visualizar o resultado final da execução, acessa o banco gold e coleção fato_socios
+2. Entrar na pasta stone/docker e digitar
+   ```docker-compose up```
+4. Aguardar os serviços serem iniciados e a execução do pipeline de ingestão dos dados
+5. Após o serviço ser exectado a seguinte mensagem deverá aparecer no console
+   ```jobs-1 exited with code 0```
+7. No navegador acesse [http://localhost8081](http://localhost8081) para acessar as tabelas criadas
+8. Faça login com o usuário e senha admin:pass
+9. Para visualizar o resultado final da execução, acessa o banco gold e coleção fato_socios
