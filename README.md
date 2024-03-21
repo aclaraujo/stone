@@ -53,7 +53,7 @@ Todos os componentes são executados por meio de container Docker. Um projeto em
 >A execução do pipeline de ingestão dos dados ocorre no momento da criação dos containeres e não é necessário qualquer comando para sua execução
 
 1. Clonar este repositório
-2. Entrar na pasta stone/docker e digitar
+2. Entrar na pasta **stone/docker** e digitar
    ```docker-compose up```
 4. Aguardar os serviços serem iniciados e a execução do pipeline de ingestão dos dados
 5. Após o serviço ser exectado a seguinte mensagem deverá aparecer no console
