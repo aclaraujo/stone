@@ -33,11 +33,25 @@ Todos os componentes são executados por meio de container Docker. Um projeto em
 * Outra tarefa que pode ser executada nesse banco é o enriquecimento de dados a apartir de outra fontes, sejam internas ou externas a organização.
 * Possui a tabela: fato_socios
 
-### Requisitos para execução
+### ETL
+* O processo de ETL/ELT foi desenvolvido utilizando a linguagem Python em sua última versão. 
+* Está dividido em 5 jobs
+>1. extract_files - realiza o download dos arquivos e a extraão dos CSVs para o disco local
+>2. ingestão_bronze - realiza a ingestão dos dados na camada ***Bronze***
+>3. ingestão_silver - realiza a ingestão dos dados na camada ***Silver***
+>4. ingestão_gold - realiza a agregação dos dados das tabelas **empresas** e **socios** e a geração da tabela **fato_socios**
+* Um script denominado **pipeline** é responsável pela ordem de execução dos jobs
+
+## Executando o projeto
+
+### Requisitos mínimos
 1. Possuir o [Docker](https://docs.docker.com/desktop/install/linux-install/) instalado
 2. Minimo de 10Gb RAM disponível
 
-## Executando
+### Passos para execução
+>[!WARNING]
+>A execução do pipeline de ingestão dos dados ocorre no momento da criação dos containeres e não é necessário qualquer comando para sua execução
+
 1. Clonar este repositório
 2. Entrar na pasta stone/docker e digitar
    ```docker-compose up```
