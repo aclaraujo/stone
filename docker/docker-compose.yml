@@ -9,9 +9,9 @@ services:
 
     ports:
     - "5001:5000"
-    volumes:
-      - ../jobs:/opt/jobs
-      - ../files:/opt/files
+    #volumes:
+    #  - ../jobs:/opt/jobs
+    #  - ../files:/opt/files
     links:
       - mongo
 
@@ -30,9 +30,9 @@ services:
     restart: always
     ports:
       - 27017:27017
-    volumes:
-      - ../data:/data
-      - ../files:/files
+    #volumes:
+      ##- ../data:/data
+      ##- ../files:/files
     healthcheck:
       test: ["CMD-SHELL", "netstat -an | grep -q 27017"]
     #command: supervisord -n && apt-get update && apt-get install -y csvtool
